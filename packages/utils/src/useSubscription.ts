@@ -19,7 +19,6 @@ import { Unsubscribe as FirestoreUnsubscribe } from "firebase/firestore";
 import { Unsubscribe as DatabaseUnsubscribe } from "firebase/database";
 import { useEffect } from "react";
 import {
-  hashQueryKey,
   QueryFunction,
   QueryKey,
   useQuery,
@@ -61,7 +60,7 @@ export function useSubscription<TData, TError, R = TData>(
   subscribeFn: (cb: (data: TData | null) => Promise<void>) => Unsubscribe,
   options?: UseSubscriptionOptions<TData, TError, R>
 ): UseQueryResult<R, TError> {
-  const hashFn = options?.queryKeyHashFn || hashQueryKey;
+  const hashFn = options?.queryKeyHashFn || JSON.stringify;
   const subscriptionHash = hashFn(subscriptionKey);
   const queryClient = useQueryClient();
 
@@ -99,7 +98,7 @@ export function useSubscription<TData, TError, R = TData>(
   );
 
   result.cancel = () => {
-    queryClient.invalidateQueries(queryKey);
+    queryClient.invalidateQueries({ queryKey });
   };
 
   let unsubscribe: Unsubscribe;

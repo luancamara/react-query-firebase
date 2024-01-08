@@ -105,8 +105,8 @@ export async function resolveQuery<T>(query: QueryType<T>): Promise<Query<T>> {
 
 export * from "./useFirestoreDocument";
 export * from "./useFirestoreDocumentData";
-export * from "./useFirestoreInfiniteQuery";
-export * from "./useFirestoreInfiniteQueryData";
+// export * from "./useFirestoreInfiniteQuery";
+// export * from "./useFirestoreInfiniteQueryData";
 export * from "./useFirestoreQuery";
 export * from "./useFirestoreQueryData";
 export * from "./mutations";

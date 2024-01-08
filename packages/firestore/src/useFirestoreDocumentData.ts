@@ -129,6 +129,7 @@ export function useFirestoreDocumentData<
     subscribeFn,
     {
       ...useQueryOptions,
+      queryKey,
       onlyOnce: !isSubscription,
       fetchFn,
     }

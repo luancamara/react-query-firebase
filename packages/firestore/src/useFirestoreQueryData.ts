@@ -138,6 +138,6 @@ export function useFirestoreQueryData<
     queryKey,
     ["useFirestoreDocument", queryKey],
     subscribeFn,
-    { ...useQueryOptions, onlyOnce: !isSubscription, fetchFn }
+    { ...useQueryOptions, queryKey, onlyOnce: !isSubscription, fetchFn }
   );
 }

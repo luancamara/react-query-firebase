@@ -74,6 +74,7 @@ export function useFirestoreQuery<T = DocumentData, R = QuerySnapshot<T>>(
     ["useFirestoreDocument", queryKey],
     subscribeFn,
     {
+        queryKey,
       ...useQueryOptions,
       onlyOnce: !isSubscription,
       fetchFn: () =>
